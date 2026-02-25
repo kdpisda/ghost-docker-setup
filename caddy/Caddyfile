@@ -1,0 +1,20 @@
+{$DOMAIN}:80 {
+	import snippets/Logging
+
+	# Traffic Analytics service
+	import snippets/TrafficAnalytics
+
+	# ActivityPub Service
+	import snippets/ActivityPub
+
+	# Default proxy everything else to Ghost
+	handle {
+		reverse_proxy ghost:2368
+	}
+
+	# Enable gzip compression
+	encode gzip
+
+	# Security headers
+	import snippets/SecurityHeaders
+}
